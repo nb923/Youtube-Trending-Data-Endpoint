@@ -4,6 +4,7 @@ import os
 from nltk.corpus import stopwords
 from dotenv import load_dotenv
 from video import Video
+from sentiment_analysis import CommentSentimentAnalysis
 
 class FetchYoutubeData:
     def __init__(self):
@@ -34,7 +35,7 @@ class FetchYoutubeData:
         parameters = {
             'part': 'snippet',
             'videoId': video_id,
-            'maxResults': 10,
+            'maxResults': 100,
             'key': self.API_KEY
         }
 
@@ -83,8 +84,12 @@ class FetchYoutubeData:
             title_tokens = self.tokenize_title(title)
             hashtags = self.get_hashtags(description)
             comments = self.get_comments(video_id)
+
+            sentiment_obj = CommentSentimentAnalysis(comments)
+
+            sentiment_score = sentiment_obj.comment_sentiment()
             
-            video_obj = Video(title, title_tokens, hashtags, comments)
+            video_obj = Video(title, title_tokens, hashtags, comments, sentiment_score)
             video_list.append(video_obj)
 
         return video_list
