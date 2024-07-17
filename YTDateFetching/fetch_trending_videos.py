@@ -5,6 +5,7 @@ from nltk.corpus import stopwords
 from dotenv import load_dotenv
 from video import Video
 from sentiment_analysis import CommentSentimentAnalysis
+from datetime import datetime
 
 class FetchYoutubeData:
     def __init__(self):
@@ -89,7 +90,7 @@ class FetchYoutubeData:
 
             sentiment_score = sentiment_obj.comment_sentiment()
             
-            video_obj = Video(title, title_tokens, hashtags, comments, sentiment_score)
+            video_obj = Video(title, title_tokens, hashtags, comments, sentiment_score, datetime.now().date())
             video_list.append(video_obj)
 
         return video_list
