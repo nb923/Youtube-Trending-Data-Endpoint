@@ -8,7 +8,15 @@ def main():
     youtube_data_fetcher = FetchYoutubeData()
     video_objects = youtube_data_fetcher.get_current_video_data()
 
-    insert_data(video_objects)
+    for video in video_objects:
+        print(f"Title: {video.title}")
+        print(f"Tokenized Title: {video.tokenized_title}")
+        print(f"Hashtags: {video.hashtags}")
+        print(f"Comments: {video.comments}")
+        print(f"Sentiment: {video.sentiment}")
+        print("---------")
+
+    # insert_data(video_objects)
 
 def insert_data(video_objs):
     load_dotenv()
