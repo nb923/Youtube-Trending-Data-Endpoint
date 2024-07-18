@@ -59,13 +59,13 @@ class FetchYoutubeData:
 
     def tokenize_title(self, title):
         tokens = re.findall(r'\b\w+\b', title.lower())
-        tokens = []
+        token_list = []
 
         for token in tokens:
             if token not in self.STOP_WORDS:
-                tokens.append(token)
+                token_list.append(token)
 
-        return tokens
+        return token_list
 
     def get_current_video_data(self):
         response = self.get_trending_videos()
