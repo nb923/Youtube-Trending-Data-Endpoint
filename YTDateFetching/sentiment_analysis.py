@@ -16,8 +16,6 @@ class CommentSentimentAnalysis:
 
         average_sentiment_score = average_sentiment_score / len(self.comments)
 
-        print(average_sentiment_score)
-
         if average_sentiment_score > 0.1:
             return "Positive"
         elif average_sentiment_score < -0.1:
