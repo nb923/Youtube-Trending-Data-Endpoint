@@ -20,7 +20,7 @@ class FetchYoutubeData:
             'part': 'snippet',
             'chart': 'mostPopular',
             'regionCode': 'US',
-            'maxResults': 5,
+            'maxResults': 100,
             'key': self.API_KEY
         }
         
